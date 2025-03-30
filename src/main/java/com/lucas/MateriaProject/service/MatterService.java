@@ -31,6 +31,11 @@ public class MatterService {
         MatterModel matter = getMatter(matterId);
         return annotationRepository.getByMatterId(matter.getId());
     }
+    public MatterModel renameMatter(int id, MatterModel matter){
+       MatterModel matt = getMatter(id);
+       matt.setNome(matter.getNome());
+       return repository.save(matt);
+    }
     public void deleteMatter(MatterModel matter){
         repository.delete(matter);
     }

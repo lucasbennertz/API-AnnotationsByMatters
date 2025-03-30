@@ -40,4 +40,8 @@ public class AnnotationController {
         service.deleteAnnotation(id);
         return ResponseEntity.noContent().build();
     }
+    @PutMapping("/{id}/rename")
+    public ResponseEntity<AnnotationModel> renameAnnotation(@PathVariable int id, @RequestBody AnnotationModel annotation) {
+        return ResponseEntity.ok(service.renameAnnotation(id, annotation));
+    }
 }

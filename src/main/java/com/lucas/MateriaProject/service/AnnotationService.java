@@ -42,5 +42,10 @@ public class AnnotationService {
     public void deleteAnnotation(Long id){
         repository.deleteById(id.toString());
     }
+    public AnnotationModel renameAnnotation(int id, AnnotationModel annotation){
+        AnnotationModel ann = repository.findAll().get(id);
+        ann.setTitle(annotation.getTitle());
+        return repository.save(ann);
+    }
 
 }

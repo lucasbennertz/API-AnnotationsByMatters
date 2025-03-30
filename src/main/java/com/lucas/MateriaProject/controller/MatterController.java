@@ -39,4 +39,8 @@ public class MatterController {
     public ResponseEntity<List<AnnotationModel>> getAnnotations(@PathVariable int matterId) {
         return ResponseEntity.ok(service.getAnnotations(matterId)) ;
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<MatterModel> renameMatter(@PathVariable int id, @RequestBody MatterModel matter){
+        return ResponseEntity.ok(service.renameMatter(id, matter));
+    }
 }
