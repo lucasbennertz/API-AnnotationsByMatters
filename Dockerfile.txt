@@ -1,0 +1,5 @@
+FROM openjdk:21
+COPY ./src/main/java/com/lucas/MateriaProject
+WORKDIR /app
+RUN javac Main.java
+CMD ["java", "Main"]

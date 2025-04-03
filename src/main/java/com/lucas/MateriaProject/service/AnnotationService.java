@@ -1,10 +1,8 @@
 package com.lucas.MateriaProject.service;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.lucas.MateriaProject.model.AnnotationModel;
 import com.lucas.MateriaProject.model.MatterModel;
 import com.lucas.MateriaProject.repository.AnnotationRepository;
-import com.lucas.MateriaProject.repository.MatterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +13,6 @@ public class AnnotationService {
 
     @Autowired
     private AnnotationRepository repository;
-    @Autowired
-    private MatterRepository matterRepository;
     @Autowired
     private MatterService matterService;
 
