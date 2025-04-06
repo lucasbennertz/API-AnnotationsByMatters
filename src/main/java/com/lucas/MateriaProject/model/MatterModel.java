@@ -21,6 +21,5 @@ public class MatterModel {
     private String id;
     private String nome;
     @DBRef
-    @JsonIgnore
     private List<AnnotationModel> annotations;
 }

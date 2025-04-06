@@ -1,5 +1,6 @@
 package com.lucas.MateriaProject.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,6 +22,7 @@ public class AnnotationModel {
     String title;
     @Field("Description")
     String description;
+    @JsonIgnore
     @DBRef
     private MatterModel matter;
 }
