@@ -20,6 +20,7 @@ public class MatterModel {
     @Id
     private String id;
     private String nome;
+    @JsonIgnore
     @DBRef
     private List<AnnotationModel> annotations;
 }

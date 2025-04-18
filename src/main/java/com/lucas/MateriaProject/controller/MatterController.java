@@ -43,4 +43,11 @@ public class MatterController {
     public ResponseEntity<MatterModel> renameMatter(@PathVariable int id, @RequestBody MatterModel matter){
         return ResponseEntity.ok(service.renameMatter(id, matter));
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<List<MatterModel>> deleteMatter(@PathVariable int id){
+        MatterModel matter = service.getMatter(id);
+        service.deleteMatter(matter);
+        return ResponseEntity.ok().body(service.getMatters());
+    }
+
 }

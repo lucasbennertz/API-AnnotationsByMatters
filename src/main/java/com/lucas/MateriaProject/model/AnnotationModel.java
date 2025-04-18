@@ -22,7 +22,6 @@ public class AnnotationModel {
     String title;
     @Field("Description")
     String description;
-    @JsonIgnore
     @DBRef
     private MatterModel matter;
 }
