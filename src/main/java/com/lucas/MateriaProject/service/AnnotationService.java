@@ -19,11 +19,11 @@ public class AnnotationService {
     public List<AnnotationModel> getAnnotations(){
         return repository.findAll();
     }
-    public AnnotationModel getAnnotation(int id){
-        return getAnnotations().get(id - 1);
+    public AnnotationModel getAnnotation(String id){
+        return repository.findById(id).orElse(null);
     }
 
-    public AnnotationModel createAnnotation(AnnotationModel annotation, int matterId){
+    public AnnotationModel createAnnotation(AnnotationModel annotation, String matterId){
         MatterModel matter = matterService.getMatter(matterId);
         if(matter == null){
             throw new RuntimeException("Materia não encontrada");
@@ -35,11 +35,11 @@ public class AnnotationService {
         matter.setAnnotations(annotations);
         return savedAnnotation;
     }
-    public void deleteAnnotation(Long id){
-        repository.deleteById(id.toString());
+    public void deleteAnnotation(String id){
+        repository.deleteById(id);
     }
-    public AnnotationModel renameAnnotation(int id, AnnotationModel annotation){
-        AnnotationModel ann = repository.findAll().get(id);
+    public AnnotationModel renameAnnotation(String id, AnnotationModel annotation){
+        AnnotationModel ann = repository.findById(id).orElse(null);
         ann.setTitle(annotation.getTitle());
         return repository.save(ann);
     }

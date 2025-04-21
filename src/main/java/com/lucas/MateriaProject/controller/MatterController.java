@@ -31,20 +31,20 @@ public class MatterController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<MatterModel> getMatter(@PathVariable int id) {
+    public ResponseEntity<MatterModel> getMatter(@PathVariable String id) {
         MatterModel matter = service.getMatter(id);
         return matter != null ? ResponseEntity.ok(matter) : ResponseEntity.notFound().build();
     }
     @GetMapping("/{matterId}/annotations")
-    public ResponseEntity<List<AnnotationModel>> getAnnotations(@PathVariable int matterId) {
+    public ResponseEntity<List<AnnotationModel>> getAnnotations(@PathVariable String matterId) {
         return ResponseEntity.ok(service.getAnnotations(matterId)) ;
     }
     @PutMapping("/{id}")
-    public ResponseEntity<MatterModel> renameMatter(@PathVariable int id, @RequestBody MatterModel matter){
+    public ResponseEntity<MatterModel> renameMatter(@PathVariable String id, @RequestBody MatterModel matter){
         return ResponseEntity.ok(service.renameMatter(id, matter));
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<List<MatterModel>> deleteMatter(@PathVariable int id){
+    public ResponseEntity<List<MatterModel>> deleteMatter(@PathVariable String id){
         MatterModel matter = service.getMatter(id);
         service.deleteMatter(matter);
         return ResponseEntity.ok().body(service.getMatters());

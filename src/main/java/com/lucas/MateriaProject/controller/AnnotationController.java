@@ -25,23 +25,23 @@ public class AnnotationController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AnnotationModel> getAnnotation(@PathVariable int id) {
+    public ResponseEntity<AnnotationModel> getAnnotation(@PathVariable String id) {
         return ResponseEntity.ok(service.getAnnotation(id));
     }
 
     @PostMapping("/{matterId}")
-    public ResponseEntity<AnnotationModel> createAnnotation(@RequestBody AnnotationModel annotation, @PathVariable int matterId) {
+    public ResponseEntity<AnnotationModel> createAnnotation(@RequestBody AnnotationModel annotation, @PathVariable String matterId) {
         AnnotationModel createdAnnotation = service.createAnnotation(annotation, matterId);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdAnnotation);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAnnotation(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteAnnotation(@PathVariable String id) {
         service.deleteAnnotation(id);
         return ResponseEntity.noContent().build();
     }
     @PutMapping("/{id}/rename")
-    public ResponseEntity<AnnotationModel> renameAnnotation(@PathVariable int id, @RequestBody AnnotationModel annotation) {
+    public ResponseEntity<AnnotationModel> renameAnnotation(@PathVariable String id, @RequestBody AnnotationModel annotation) {
         return ResponseEntity.ok(service.renameAnnotation(id, annotation));
     }
 }

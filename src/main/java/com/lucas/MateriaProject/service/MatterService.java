@@ -20,17 +20,18 @@ public class MatterService {
     public List<MatterModel> getMatters(){
         return repository.findAll();
     }
-    public MatterModel getMatter(int id){
-        return getMatters().get(id - 1);
+    public MatterModel getMatter(String id){
+        return repository.findById(id).orElse(null);
+
     }
     public MatterModel createMatter(MatterModel matter){
         return repository.save(matter);
     }
-    public List<AnnotationModel> getAnnotations(int matterId){
+    public List<AnnotationModel> getAnnotations(String matterId){
         MatterModel matter = getMatter(matterId);
         return annotationRepository.getByMatterId(matter.getId());
     }
-    public MatterModel renameMatter(int id, MatterModel matter){
+    public MatterModel renameMatter(String id, MatterModel matter){
        MatterModel matt = getMatter(id);
        matt.setNome(matter.getNome());
        return repository.save(matt);
