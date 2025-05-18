@@ -1,0 +1,23 @@
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: monginho
+    ports:
+      - "56789:56789"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: lucas
+      MONGO_INITDB_ROOT_PASSWORD: luquinhas
+    volumes:
+      - mongo-data:/data/db
+  app-java:
+    build: .
+    container_name: meu-app-java
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongodb
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://lucas:luquinhas@mongodb:56789/meubanco?authSource=admin
+
+volumes:
+  mongo-data:
