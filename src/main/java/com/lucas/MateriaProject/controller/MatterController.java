@@ -45,8 +45,7 @@ public class MatterController {
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<List<MatterModel>> deleteMatter(@PathVariable String id){
-        MatterModel matter = service.getMatter(id);
-        service.deleteMatter(matter);
+        service.deleteMatter(id);
         return ResponseEntity.ok().body(service.getMatters());
     }
 

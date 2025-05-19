@@ -36,7 +36,7 @@ public class MatterService {
        matt.setNome(matter.getNome());
        return repository.save(matt);
     }
-    public void deleteMatter(MatterModel matter){
-        repository.delete(matter);
+    public void deleteMatter(String matterId){
+        repository.deleteById(matterId);
     }
 }

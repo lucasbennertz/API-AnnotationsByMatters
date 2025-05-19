@@ -3,7 +3,7 @@ services:
     image: mongo:7.0
     container_name: monginho
     ports:
-      - "56789:56789"
+      - "27017:27017"
     environment:
       MONGO_INITDB_ROOT_USERNAME: lucas
       MONGO_INITDB_ROOT_PASSWORD: luquinhas
@@ -17,7 +17,7 @@ services:
     depends_on:
       - mongodb
     environment:
-      - SPRING_DATA_MONGODB_URI=mongodb://lucas:luquinhas@mongodb:56789/meubanco?authSource=admin
+      - SPRING_DATA_MONGODB_URI=mongodb://lucas:luquinhas@mongodb:27017/meubanco?authSource=admin
 
 volumes:
   mongo-data:
