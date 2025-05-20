@@ -36,9 +36,9 @@ public class AnnotationController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAnnotation(@PathVariable String id) {
+    public ResponseEntity<List<AnnotationModel>> deleteAnnotation(@PathVariable String id) {
         service.deleteAnnotation(id);
-        return ResponseEntity.noContent().build();
+        return getAnnotations();
     }
     @PutMapping("/{id}/rename")
     public ResponseEntity<AnnotationModel> renameAnnotation(@PathVariable String id, @RequestBody AnnotationModel annotation) {
